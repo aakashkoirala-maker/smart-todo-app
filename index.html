@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A smart to-do app with priorities, due dates, filtering, and dark mode." />
+  <title>TaskFlow — Smart To-Do</title>
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-    
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <h1>TaskFlow</h1>
+        <span class="task-count" id="taskCount">0 tasks</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-icon" id="themeIcon">🌙</span>
+      </button>
+    </header>
+
+    <main>
+      <ul class="task-list" id="taskList"></ul>
+      <div class="empty-state" id="emptyState">
+        <p class="empty-icon">📋</p>
+        <p class="empty-text">No tasks yet. Add one above!</p>
+      </div>
+    </main>
+
+    <footer class="app-footer"><p>TaskFlow</p></footer>
+  </div>
 </body>
 </html>
