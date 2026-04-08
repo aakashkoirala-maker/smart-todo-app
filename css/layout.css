@@ -1,0 +1,15 @@
+/* App layout */
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-container {
+  width: min(960px, 92%);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  padding: 1rem 0;
+}
