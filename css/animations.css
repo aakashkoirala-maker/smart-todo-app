@@ -1,13 +1,1 @@
-/* Motion primitives */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.app-container {
-  animation: fadeIn 0.2s ease;
-}
+/* animations.css reserved for future animation styles */

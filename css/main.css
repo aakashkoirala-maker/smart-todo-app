@@ -1,5 +1,16 @@
-@import url("./base.css");
-@import url("./themes.css");
-@import url("./layout.css");
-@import url("./components.css");
-@import url("./animations.css");
+/* main.css — Imports all CSS files in the correct order. */
+
+/* 1. Variables, reset, and base typography */
+@import url("base.css");
+
+/* 2. Dark mode and theme overrides */
+@import url("themes.css");
+
+/* 3. Page layout, containers, and responsive rules */
+@import url("layout.css");
+
+/* 4. UI components: form, buttons, cards, modal, etc. */
+@import url("components.css");
+
+/* 5. Transitions, hover effects, and keyframe animations */
+@import url("animations.css");

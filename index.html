@@ -21,8 +21,38 @@
       </button>
     </header>
 
+    <form class="task-form" id="taskForm" autocomplete="off">
+      <div class="form-row">
+        <input
+          type="text"
+          id="taskInput"
+          class="task-input"
+          placeholder="Enter a task"
+          required
+        />
+        <button type="submit" class="btn-add">Add</button>
+      </div>
+    </form>
+
+    <div class="toolbar">
+      <input type="search" id="searchInput" class="search-input" placeholder="Search tasks" />
+      <div class="filter-group" id="filterGroup">
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="active">Active</button>
+        <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+    </div>
+
     <main>
-      <ul class="task-list" id="taskList"></ul>
+      <ul class="task-list" id="taskList">
+        <li class="task-item">
+          <div class="task-item-left">
+            <input type="checkbox" aria-label="Mark task complete" />
+            <span>Sample task for layout preview</span>
+          </div>
+          <button type="button" class="delete-btn" aria-label="Delete task">Delete</button>
+        </li>
+      </ul>
       <div class="empty-state" id="emptyState">
         <p class="empty-icon">📋</p>
         <p class="empty-text">No tasks yet. Add one above!</p>
