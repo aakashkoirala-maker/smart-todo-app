@@ -1,3 +1,4 @@
+
 var taskForm = document.getElementById("taskForm");
 var taskInput = document.getElementById("taskInput");
 var taskList = document.getElementById("taskList");
@@ -25,15 +26,24 @@ taskForm.addEventListener("submit", function (event) {
 function renderTasks() {
 	taskList.innerHTML = "";
 
-	tasks.forEach(function (task) {
+	tasks.forEach(function (task, idx) {
 		var li = document.createElement("li");
 		li.className = "task-item";
+		if (task.completed) {
+			li.classList.add("completed");
+		}
 
 		var left = document.createElement("div");
 		left.className = "task-item-left";
 
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
+		checkbox.className = "task-checkbox";
+		checkbox.checked = !!task.completed;
+		checkbox.addEventListener("change", function () {
+			task.completed = !task.completed;
+			renderTasks();
+		});
 
 		var text = document.createElement("span");
 		text.textContent = task.text;

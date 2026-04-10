@@ -120,3 +120,53 @@
     flex-direction: column;
   }
 }
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.task-item-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.task-item .delete-btn {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: var(--danger);
+  border-radius: 8px;
+  padding: 0.3rem 0.65rem;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+}
+
+@media (max-width: 640px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+}
