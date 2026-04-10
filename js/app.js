@@ -52,6 +52,12 @@ function renderTasks() {
 		deleteBtn.type = "button";
 		deleteBtn.className = "delete-btn";
 		deleteBtn.textContent = "Delete";
+		deleteBtn.addEventListener("click", function () {
+			tasks = tasks.filter(function (t) {
+				return t !== task;
+			});
+			renderTasks();
+		});
 
 		left.appendChild(checkbox);
 		left.appendChild(text);
