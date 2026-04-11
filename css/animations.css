@@ -1,1 +1,109 @@
-/* animations.css reserved for future animation styles */
+/* animations.css — All transitions, hover effects, and keyframe animations. */
+
+/* Body Transition */
+
+body {
+	transition: background-color var(--transition), color var(--transition);
+}
+
+
+/* Form Transitions*/
+
+.task-form {
+	transition: background-color var(--transition), border-color var(--transition);
+}
+
+.task-input {
+	transition: border-color var(--transition), background-color var(--transition);
+}
+
+.form-control {
+	transition: border-color var(--transition), background-color var(--transition);
+}
+
+
+/* Button Transitions */
+
+.btn {
+	transition: background-color var(--transition), transform 0.1s ease;
+}
+
+.btn:active {
+	transform: scale(0.97);
+}
+
+.theme-toggle {
+	transition: background-color var(--transition), border-color var(--transition);
+}
+
+
+/* Search & Filter Transitions*/
+
+.search-input {
+	transition: border-color var(--transition), background-color var(--transition);
+}
+
+.filter-btn {
+	transition: background-color var(--transition), color var(--transition);
+}
+
+.filter-btn:hover {
+	color: var(--text);
+}
+
+
+/* Task Card Transitions*/
+
+.task-card {
+	transition: background-color var(--transition), border-color var(--transition),
+		opacity var(--transition), transform var(--transition);
+	animation: slideIn 0.25s ease;
+}
+
+.task-card:hover {
+	border-color: var(--accent);
+}
+
+.task-text {
+	transition: color var(--transition);
+}
+
+.action-btn {
+	transition: background-color var(--transition), color var(--transition);
+}
+
+.action-btn:hover {
+	background: var(--bg);
+	color: var(--text);
+}
+
+.action-btn.delete:hover {
+	background: rgba(214, 69, 69, 0.1);
+	color: var(--danger);
+}
+
+
+/* Modal Transitions*/
+
+.modal-overlay {
+	transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.modal {
+	transition: transform 0.2s ease, background-color var(--transition);
+}
+
+
+/* Keyframes*/
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

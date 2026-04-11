@@ -1,8 +1,14 @@
+/* components.css — Reusable UI components: form, buttons, inputs, task cards, modal, empty state. */
+
+/* Add Task Form*/
+
 .task-form {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
 }
 
 .form-row {
@@ -10,163 +16,352 @@
   gap: 10px;
 }
 
-.task-input {
-  flex: 1;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+.form-row + .form-row {
+  margin-top: 10px;
 }
 
-.btn-add {
+.task-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.task-input:focus {
+  border-color: var(--accent);
+}
+
+.form-options {
+  display: flex;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.form-control {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+}
+
+
+/* Buttons*/
+
+.btn {
+  padding: 10px 20px;
   border: none;
-  background: var(--accent);
-  color: #ffffff;
-  border-radius: 10px;
-  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
-.app-header,
-.app-footer,
-.empty-state {
-  background: var(--surface);
+.btn-add {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.btn-add:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-save {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.btn-save:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: var(--text-secondary);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem;
+}
+
+.btn-cancel:hover {
+  background-color: var(--surface-hover);
 }
 
 .theme-toggle {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 50%;
   background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.theme-toggle:hover {
+  background: var(--surface-hover);
+}
+
+.theme-icon {
+  font-size: 1.1rem;
+}
+
+
+/* Search & Filter Buttons*/
 
 .search-input {
   flex: 1;
-  min-width: 180px;
-  padding: 0.6rem 0.75rem;
+  min-width: 160px;
+  padding: 9px 14px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: var(--surface);
   color: var(--text);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
 }
 
 .filter-group {
   display: flex;
   gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px;
 }
 
 .filter-btn {
-  border: 1px solid var(--border);
-  background: #ffffff;
-  color: var(--text);
-  border-radius: 8px;
-  padding: 0.45rem 0.75rem;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
 }
 
 .filter-btn.active {
-  border-color: var(--accent);
-  color: var(--accent);
+  background-color: var(--accent);
+  color: #fff;
 }
 
-.task-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
 
-.task-item {
+/* Task Card*/
+
+.task-card {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.7rem;
+  align-items: flex-start;
+  gap: 12px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
 }
 
-.task-item-left {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
+/* Completed task styling */
+.task-card.completed {
+  background-color: var(--completed-bg);
+  opacity: 0.7;
 }
 
-.task-item .delete-btn {
-  border: 1px solid #fecaca;
-  background: #fef2f2;
-  color: var(--danger);
-  border-radius: 8px;
-  padding: 0.3rem 0.65rem;
-}
-
-.empty-state {
-  text-align: center;
-  padding: 48px 20px;
-}
-
-@media (max-width: 640px) {
-  .toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .form-row {
-    flex-direction: column;
-  }
-}
-.task-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.7rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.75rem 0.9rem;
-}
-
-.task-item.completed span {
+.task-card.completed .task-text {
   text-decoration: line-through;
-  color: var(--text-secondary);
+  color: var(--completed-text);
 }
 
-.task-item-left {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.task-item .delete-btn {
-  border: 1px solid #fecaca;
-  background: #fef2f2;
-  color: var(--danger);
-  border-radius: 8px;
-  padding: 0.3rem 0.65rem;
-}
-
+/* Checkbox */
 .task-checkbox {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
 }
+
+/* Task body */
+.task-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.task-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.task-date,
+.task-priority {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.task-date {
+  color: var(--text-secondary);
+  background: var(--bg);
+}
+
+.task-date.overdue {
+  color: var(--priority-high);
+  background: rgba(224, 90, 71, 0.1);
+}
+
+.task-priority {
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.task-priority.low {
+  background-color: var(--priority-low);
+}
+
+.task-priority.medium {
+  background-color: var(--priority-medium);
+}
+
+.task-priority.high {
+  background-color: var(--priority-high);
+}
+
+/* Action buttons */
+.task-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Empty State*/
 
 .empty-state {
   text-align: center;
   padding: 48px 20px;
+  display: none;
 }
 
-@media (max-width: 640px) {
-  .toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
+.empty-state.visible {
+  display: block;
+}
 
-  .form-row {
-    flex-direction: column;
-  }
+.empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.empty-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+
+/* Edit Modal*/
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(10px);
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0);
+}
+
+.modal h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+
+.modal .form-group {
+  margin-bottom: 14px;
+}
+
+.modal .form-group label {
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.modal .form-control {
+  width: 100%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
 }

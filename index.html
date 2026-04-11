@@ -21,28 +21,51 @@
       </button>
     </header>
 
+    <!-- Add Task Form -->
     <form class="task-form" id="taskForm" autocomplete="off">
       <div class="form-row">
         <input
           type="text"
           id="taskInput"
           class="task-input"
-          placeholder="Enter a task"
+          placeholder="What needs to be done?"
+          maxlength="120"
           required
         />
-        <button type="submit" class="btn-add">Add</button>
+        <button type="submit" class="btn btn-add" id="addBtn">Add</button>
+      </div>
+      <div class="form-row form-options">
+        <div class="form-group">
+          <label for="taskDate">Due date</label>
+          <input type="date" id="taskDate" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="taskPriority">Priority</label>
+          <select id="taskPriority" class="form-control">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
       </div>
     </form>
 
+    <!-- Toolbar: Search + Filters -->
     <div class="toolbar">
-      <input type="search" id="searchInput" class="search-input" placeholder="Search tasks" />
+      <input
+        type="search"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search tasks..."
+      />
       <div class="filter-group" id="filterGroup">
-        <button type="button" class="filter-btn active" data-filter="all">All</button>
-        <button type="button" class="filter-btn" data-filter="active">Active</button>
-        <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
       </div>
     </div>
 
+    <!-- Task List -->
     <main>
       <ul class="task-list" id="taskList"></ul>
       <div class="empty-state" id="emptyState">
@@ -50,10 +73,42 @@
         <p class="empty-text">No tasks yet. Add one above!</p>
       </div>
     </main>
-
-    <footer class="app-footer"><p>TaskFlow</p></footer>
   </div>
 
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal" role="dialog" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">Edit Task</h2>
+      <form id="editForm" autocomplete="off">
+        <input type="hidden" id="editId" />
+        <div class="form-group">
+          <label for="editText">Task</label>
+          <input type="text" id="editText" class="form-control" maxlength="120" required />
+        </div>
+        <div class="form-group">
+          <label for="editDate">Due date</label>
+          <input type="date" id="editDate" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="editPriority">Priority</label>
+          <select id="editPriority" class="form-control">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-cancel" id="cancelEdit">Cancel</button>
+          <button type="submit" class="btn btn-save">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS files loaded in dependency order -->
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

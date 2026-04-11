@@ -1,1 +1,16 @@
-/* themes.css reserved for future theme overrides */
+/* themes.css — Dark mode overrides. Light mode colors are in base.css :root. */
+
+[data-theme="dark"] {
+	--bg: #1c1c2e;
+	--surface: #2a2a40;
+	--surface-hover: #32324d;
+	--text: #e5e5ea;
+	--text-secondary: #98989e;
+	--border: #3a3a52;
+	--accent: #7b7bf7;
+	--accent-hover: #6a6ae6;
+	--shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	--shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.3);
+	--completed-bg: #24243a;
+	--completed-text: #6a6a78;
+}
