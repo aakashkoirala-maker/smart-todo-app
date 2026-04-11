@@ -6,7 +6,8 @@ var taskList = document.getElementById("taskList");
 var searchInput = document.getElementById("searchInput");
 var filterGroup = document.getElementById("filterGroup");
 
-var tasks = [];
+
+var tasks = getTasks();
 var currentFilter = "all";
 var currentSearch = "";
 
@@ -23,7 +24,7 @@ taskForm.addEventListener("submit", function (event) {
 	};
 
 	tasks.push(task);
-	console.log(task);
+	saveTasks(tasks);
 	renderTasks(getFilteredTasks());
 	taskForm.reset();
 });
@@ -72,6 +73,7 @@ function renderTasks(list) {
 		checkbox.checked = !!task.completed;
 		checkbox.addEventListener("change", function () {
 			task.completed = !task.completed;
+			saveTasks(tasks);
 			renderTasks(getFilteredTasks());
 		});
 
@@ -86,6 +88,7 @@ function renderTasks(list) {
 			tasks = tasks.filter(function (t) {
 				return t !== task;
 			});
+			saveTasks(tasks);
 			renderTasks(getFilteredTasks());
 		});
 
