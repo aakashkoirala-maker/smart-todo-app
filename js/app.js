@@ -1,9 +1,14 @@
 
+
 var taskForm = document.getElementById("taskForm");
 var taskInput = document.getElementById("taskInput");
 var taskList = document.getElementById("taskList");
+var searchInput = document.getElementById("searchInput");
+var filterGroup = document.getElementById("filterGroup");
 
 var tasks = [];
+var currentFilter = "all";
+var currentSearch = "";
 
 taskForm.addEventListener("submit", function (event) {
 	event.preventDefault();
@@ -19,14 +24,39 @@ taskForm.addEventListener("submit", function (event) {
 
 	tasks.push(task);
 	console.log(task);
-	renderTasks();
+	renderTasks(getFilteredTasks());
 	taskForm.reset();
 });
 
-function renderTasks() {
-	taskList.innerHTML = "";
+searchInput.addEventListener("input", function (event) {
+	currentSearch = event.target.value;
+	renderTasks(getFilteredTasks());
+});
 
-	tasks.forEach(function (task, idx) {
+filterGroup.addEventListener("click", function (event) {
+	if (!event.target.classList.contains("filter-btn")) return;
+	var buttons = filterGroup.querySelectorAll(".filter-btn");
+	buttons.forEach(function (btn) { btn.classList.remove("active"); });
+	event.target.classList.add("active");
+	currentFilter = event.target.dataset.filter;
+	renderTasks(getFilteredTasks());
+});
+
+function getFilteredTasks() {
+	return tasks.filter(function (task) {
+		var matchesFilter =
+			currentFilter === "all" ||
+			(currentFilter === "active" && !task.completed) ||
+			(currentFilter === "completed" && task.completed);
+		var matchesSearch =
+			task.text.toLowerCase().includes(currentSearch.toLowerCase());
+		return matchesFilter && matchesSearch;
+	});
+}
+
+function renderTasks(list) {
+	taskList.innerHTML = "";
+	(list || tasks).forEach(function (task) {
 		var li = document.createElement("li");
 		li.className = "task-item";
 		if (task.completed) {
@@ -42,7 +72,7 @@ function renderTasks() {
 		checkbox.checked = !!task.completed;
 		checkbox.addEventListener("change", function () {
 			task.completed = !task.completed;
-			renderTasks();
+			renderTasks(getFilteredTasks());
 		});
 
 		var text = document.createElement("span");
@@ -56,7 +86,7 @@ function renderTasks() {
 			tasks = tasks.filter(function (t) {
 				return t !== task;
 			});
-			renderTasks();
+			renderTasks(getFilteredTasks());
 		});
 
 		left.appendChild(checkbox);
